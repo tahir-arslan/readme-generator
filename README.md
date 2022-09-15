@@ -7,6 +7,8 @@ A good project requires a detailed README.md with information about the app. Sin
 
 With a series of command-line questions, a user is able to automatically generate a README file based on the responses given. The user will also be able to include a screenshot of the application if desired. Following that choice, since every project is different, not all questions are required! This will automatically generate a markdown file based on the information the user provides.
 
+You are also able to checkout the a showcasing of this project by checking out ![this video link](https://drive.google.com/file/d/1Oa9kn2-_hf2WPjiaVG4MdvwEgJaH-SeD/view).
+
 This generator is powered by Node.js.
 
 ## Table of Contents

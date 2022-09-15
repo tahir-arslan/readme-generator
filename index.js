@@ -12,7 +12,7 @@ const promptData = readmeData => {
 
     I will then ask details about your project, for which only some feilds are required.
     These questions (in the following order) include: 
-    Title, Description, Screenshot, Installation, Usage, License(s), Contribution Guidelines, and Tests Instructions,
+    Title, Description, Screenshot, Installation, Usage, License(s), Contribution Guidelines, and Tests Instructions.
     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     `);
     return inquirer.prompt([{
@@ -89,7 +89,7 @@ const promptData = readmeData => {
         {
             type: 'input',
             name: 'screenshot',
-            message: 'Enter the filepath of your screenshot without any quotations or paranthesis. For example: /assets/images/screenshot.png',
+            message: 'Enter the filepath of your screenshot without any quotations or paranthesis. For example: /assets/images/screenshot.png     ',
             validate: projectScreenshotInput => {
                 if (projectScreenshotInput) {
                     return true;
