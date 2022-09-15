@@ -2,6 +2,7 @@
 
 ## Description
 ![Screenshot](/assets/images/screenshot.png)
+
 A good project requires a detailed README.md with information about the app. Since every application is different, every README requires certain information to let the user know how the app works. It should include details on how to use/install the application, how to contribute to the project, and how to report any issues.
 
 With a series of command-line questions, a user is able to automatically generate a README file based on the responses given. The user will also be able to include a screenshot of the application if desired. Following that choice, since every project is different, not all questions are required! This will automatically generate a markdown file based on the information the user provides.
