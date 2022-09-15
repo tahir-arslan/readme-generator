@@ -38,6 +38,7 @@ MIT
 
 ## Contact <a href="contact"></a>
 If you utilize this app to generaet a README for a project, don't hesitate to show it to me! Feel free to contact me with examples or any questions from my information below:
+
 Arslan Tahir (Full Stack Developer)
 GitHub: [@tahir-arslan](https://github.com/users/tahir-arslan)
 Email: tahir.arslan@gmail.com
