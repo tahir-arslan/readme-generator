@@ -1,4 +1,15 @@
- // draft description with optional screenshot
+// display licenses if selected
+const optionalLicenses = licenses => {
+    let tag = ``;
+    if (licenses.includes("Apache")) { tag += `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) `}
+    if (licenses.includes("IBM")) { tag += `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0) `}
+    if (licenses.includes("MIT")) { tag += `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) `}
+    if (licenses.includes("Open Database License")) { tag += `[![License: ODbL](https://img.shields.io/badge/License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/) `}
+    if (licenses.includes("Public Domain Dedication and License")) { tag += `[![License: ODbL](https://img.shields.io/badge/License-PDDL-brightgreen.svg)](https://opendatacommons.org/licenses/pddl/) `}
+    return tag;    
+}
+
+// draft description with optional screenshot
  const optionalScreenshot = optionals => {
     screenshotContent = ``;
     if (optionals.confirmScreenshot) { screenshotContent+= `![Screenshot](${optionals.screenshot})`};
@@ -9,16 +20,15 @@
  const tableofcontentDraft = optionals => {
     tableofcontentContent = `## Table of Contents`;
     if (optionals.confirmInstall) { tableofcontentContent += `
-    [Installation](#installation)`};
+[Installation](#installation)`};
     if (optionals.confirmUsage) { tableofcontentContent += `
-    [Usage](#usage)`};
+[Usage](#usage)`};
     if (optionals.license !== '') { tableofcontentContent += `
-    [License(s)](#licenses)`};
+[License(s)](#licenses)`};
     if (optionals.confirmContribution) { tableofcontentContent += `
-    [How to Contribute](#contribution)`};
+[How to Contribute](#contribution)`};
     if (optionals.confirmTests) { tableofcontentContent += `
-    [Tests](#tests)`};
-    console.log(tableofcontentContent);
+[Tests](#tests)`};
     return tableofcontentContent;
  }
 
@@ -26,38 +36,49 @@
  const readmeDraft = optionals => {
     readmeOptionalContent = ``;
     if (optionals.confirmInstall) { readmeOptionalContent += `## Installation <a href="installation"></a>
-    ${optionals.install}`};
-    if (optionals.confirmUsage) { readmeOptionalContent += `## Usage <a href="usage"></a>
-    ${optionals.usage}`};
-    if (optionals.license !== '') { readmeOptionalContent += `## License(s) <a href="licenses"></a>
-    ${optionals.license}`};
-    if (optionals.confirmContribution) { readmeOptionalContent += `## How to Contribute <a href="contribution"></a>
-    ${optionals.contribution}`};
-    if (optionals.confirmTests) { readmeOptionalContent += `## Test <a href="tests"></a>
-    ${optionals.tests}`};
+${optionals.install}
+`};
+    if (optionals.confirmUsage) { readmeOptionalContent += `
+## Usage <a href="usage"></a>
+${optionals.usage}
+`};
+    if (optionals.license !== '') { readmeOptionalContent += `
+## License(s) <a href="licenses"></a>
+${optionals.license}
+`};
+    if (optionals.confirmContribution) { readmeOptionalContent += `
+## How to Contribute <a href="contribution"></a>
+${optionals.contribution}
+`};
+    if (optionals.confirmTests) { readmeOptionalContent += `
+## Test <a href="tests"></a>
+${optionals.tests}
+`};
+    return readmeOptionalContent;
  };
 
+//  compile and draft final readme template
 let generateReadMe = readmeData => {
-    console.log(readmeData);
     // destructure projects and about data from templateData based on property key names
     const { name, email, github, portfolioName, description, ...optionals } = readmeData;
+    return `# ${portfolioName}
+${optionalLicenses(optionals.license)}
 
-    return `
-        # ${portfolioName}
+## Description
+${description}
 
-        ## Description
-        ${description}
-        ${optionalScreenshot(optionals)}
+#### Screenshot
+${optionalScreenshot(optionals)}
 
-        ${tableofcontentDraft(optionals)}
-        [Questions](#questions)
+${tableofcontentDraft(optionals)}
+[Questions](#questions)
 
-        ${readmeDraft(optionals)}
+${readmeDraft(optionals)}
 
-        ## Questions <a href = "questions"></a>
-        My name is ${name}, the creator of this project. If you have any issues, comments, concerns, or questions regarding this project, feel free to contact me at ${email}.
+## Questions <a href = "questions"></a>
+My name is ${name}, the creator of this project. If you have any issues, comments, concerns, or questions regarding this project, feel free to contact me at ${email}.
 
-        If you would like to check out my other projects, feel free to explore my !(GitHub Page)[https://github.com/${github}/].
+If you would like to check out my other projects, feel free to explore my !(GitHub Page)[https://github.com/${github}/].
     `;
 };
 

@@ -1,26 +1,19 @@
-// Packages
+// requirements
 const inquirer = require('inquirer');
 const generateReadMe = require('./src/readme-template');
+const writeFile = require('./utils/generateMarkdown');
 
-// Obtain User Information
-
-// WHEN I enter my project title
-// THEN this is displayed as the title of the README
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-
+// ask questions
 const promptData = readmeData => {
     console.log(`
-    -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     Hello! Welcome to this README.md generator. I will begin by asking a series of questions
     for your project, starting with your name, email, and GitHub username.
 
     I will then ask details about your project, for which only some feilds are required.
     These questions (in the following order) include: 
     Title, Description, Screenshot, Installation, Usage, License(s), Contribution Guidelines, and Tests Instructions,
-    -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     `);
     return inquirer.prompt([{
             type: 'input',
@@ -96,7 +89,7 @@ const promptData = readmeData => {
         {
             type: 'input',
             name: 'screenshot',
-            message: 'Enter the filepath of your screenshot without any quotations or paranthesis. For example: ./assets/images/screenshot.png',
+            message: 'Enter the filepath of your screenshot without any quotations or paranthesis. For example: /assets/images/screenshot.png',
             validate: projectScreenshotInput => {
                 if (projectScreenshotInput) {
                     return true;
@@ -162,7 +155,7 @@ const promptData = readmeData => {
         {
             type: 'input',
             name: 'contribution',
-            message: 'Please explain how someone can contribute to this project..',
+            message: 'Please explain how someone can contribute to this project.',
             validate: confirmContribution => {
                 if (confirmContribution) {
                     return true;
@@ -196,14 +189,8 @@ const promptData = readmeData => {
     ])
 };
 
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
-
+// async
 promptData()
-    .then(readmeData => {return generateReadMe(readmeData)})
+    .then(readmeData => {return generateReadMe(readmeData);})
+    .then(createReadme => {return writeFile(createReadme);})
+    .catch(err => {console.log(err);})
