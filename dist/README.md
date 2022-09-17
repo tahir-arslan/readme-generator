@@ -1,26 +1,29 @@
-# README Generator
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+# README.md Generator
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ## Description
-The title describes the project perfectly. =)
+This application aids the user in generating a README.md file. User input is required.
 
 #### Screenshot
 ![Screenshot](/assets/images/screenshot.png)
 
 ## Table of Contents
 [Installation](#installation)
+
 [Usage](#usage)
+
 [License(s)](#licenses)
+
 [Questions](#questions)
 
-## Installation <a href="installation"></a>
-execute `npm i` in terminal
+## Installation
+First, clone the repo to your local repository. Next, open the project in your code editor, start the terminal, and execute `npm i`. All the dependancies will be installed automatically.
 
-## Usage <a href="usage"></a>
-Use this by saying hi to the world.
+## Usage
+Once the dependancies are installed, execute `node index.js` in your terminal to begin the application.
 
-## License(s) <a href="licenses"></a>
-Apache,IBM,MIT
+## License(s)
+MIT
 
 
 ## Questions <a href = "questions"></a>

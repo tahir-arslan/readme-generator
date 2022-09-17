@@ -20,40 +20,44 @@ const optionalLicenses = licenses => {
  const tableofcontentDraft = optionals => {
     tableofcontentContent = `## Table of Contents`;
     if (optionals.confirmInstall) { tableofcontentContent += `
-[Installation](#installation)`};
+[Installation](#installation)
+`};
     if (optionals.confirmUsage) { tableofcontentContent += `
-[Usage](#usage)`};
+[Usage](#usage)
+`};
     if (optionals.license !== '') { tableofcontentContent += `
-[License(s)](#licenses)`};
+[License(s)](#licenses)
+`};
     if (optionals.confirmContribution) { tableofcontentContent += `
-[How to Contribute](#contribution)`};
+[How to Contribute](#contribution)
+`};
     if (optionals.confirmTests) { tableofcontentContent += `
-[Tests](#tests)`};
+[Tests](#tests)
+`};
     return tableofcontentContent;
  }
 
  // draft readme template based on optionals
  const readmeDraft = optionals => {
     readmeOptionalContent = ``;
-    if (optionals.confirmInstall) { readmeOptionalContent += `## Installation <a href="installation"></a>
+    if (optionals.confirmInstall) { readmeOptionalContent += `## Installation
 ${optionals.install}
 `};
     if (optionals.confirmUsage) { readmeOptionalContent += `
-## Usage <a href="usage"></a>
+## Usage
 ${optionals.usage}
 `};
     if (optionals.license !== '') { readmeOptionalContent += `
-## License(s) <a href="licenses"></a>
+## License(s)
 ${optionals.license}
 `};
     if (optionals.confirmContribution) { readmeOptionalContent += `
-## How to Contribute <a href="contribution"></a>
+## How to Contribute
 ${optionals.contribution}
 `};
     if (optionals.confirmTests) { readmeOptionalContent += `
-## Test <a href="tests"></a>
-${optionals.tests}
-`};
+## Test
+${optionals.tests}`};
     return readmeOptionalContent;
  };
 
