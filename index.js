@@ -23,7 +23,7 @@ const promptData = readmeData => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('     Please enter your name!');
                     return false;
                 }
             }
@@ -32,11 +32,15 @@ const promptData = readmeData => {
             type: 'input',
             name: 'email',
             message: 'Enter your email address (Required)',
-            validate: usernameInput => {
-                if (usernameInput) {
+            validate: emailInput => {
+                let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)
+                if (emailInput && valid) {
                     return true;
+                } else if (emailInput && !valid) {
+                    console.log('     Please enter a valid email.');
+                    return false;
                 } else {
-                    console.log('Please enter your email!');
+                    console.log("     Please enter your email address!");
                     return false;
                 }
             }
@@ -49,7 +53,7 @@ const promptData = readmeData => {
                 if (usernameInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('     Please enter your name!');
                     return false;
                 }
             }
@@ -62,7 +66,7 @@ const promptData = readmeData => {
                 if (projectNameInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('     Please enter your name!');
                     return false;
                 }
             }
@@ -75,7 +79,7 @@ const promptData = readmeData => {
                 if (projectDescriptionInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('     Please enter your name!');
                     return false;
                 }
             }
@@ -94,7 +98,7 @@ const promptData = readmeData => {
                 if (projectScreenshotInput) {
                     return true;
                 } else {
-                    console.log("You forgot to enter the filepath! Please enter the filepath of the screenshot to continue.")
+                    console.log("     You forgot to enter the filepath! Please enter the filepath of the screenshot to continue.")
                     return false;
                 }
             },
@@ -114,7 +118,7 @@ const promptData = readmeData => {
                 if (projectInstallInput) {
                     return true;
                 } else {
-                    console.log("You didn't explain anything! Please explain how to install your project")
+                    console.log("     You didn't explain anything! Please explain how to install your project")
                     return false;
                 }
             },
@@ -134,7 +138,7 @@ const promptData = readmeData => {
                 if (projectUsageInput) {
                     return true;
                 } else {
-                    console.log("You didn't explain anything! Please explain how to use your project")
+                    console.log("     You didn't explain anything! Please explain how to use your project")
                     return false;
                 }
             },
@@ -160,7 +164,7 @@ const promptData = readmeData => {
                 if (confirmContribution) {
                     return true;
                 } else {
-                    console.log("Don't be shy! Let people know how they can help contribute to this project.")
+                    console.log("     Don't be shy! Let people know how they can help contribute to this project.")
                     return false;
                 }
             },
@@ -180,7 +184,7 @@ const promptData = readmeData => {
                 if (projectTestInput) {
                     return true;
                 } else {
-                    console.log("You forgot to explain how to test the application! Don't forget to include how to run the test as well.")
+                    console.log("     You forgot to explain how to test the application! Don't forget to include how to run the test as well.")
                     return false;
                 }
             },
@@ -193,4 +197,5 @@ const promptData = readmeData => {
 promptData()
     .then(readmeData => {return generateReadMe(readmeData);})
     .then(createReadme => {return writeFile(createReadme);})
+    .then(console.log("README.md generated! Check the './dist' folder for your file."))
     .catch(err => {console.log(err);})
